@@ -1,7 +1,7 @@
 //
 import fs from "fs/promises";
 import { writeFile } from "fs/promises";
-import {
+import { 
   nombresFemeninosOriginales,
   nombresMasculinosOriginales,
   DataApellidos,
@@ -115,6 +115,8 @@ function generarDomicilio(localidadName) {
   return domicilio;
 }
 
+
+
 function generarAlumno(usedDNIs) {
   const nombreMasculino = obtenerElementoAleatorio(DataNombresMasculinos);
   const nombreFemenino = obtenerElementoAleatorio(DataNombresFemeninos);
@@ -176,6 +178,18 @@ function generarAlumno(usedDNIs) {
   };
 }
 
+async function guardarEstablecimientos() {
+  try {
+    await fs.writeFile("establecimientos.json", JSON.stringify(DataEstablecimientos, null, 2));
+    console.log(
+      "Los documentos JSON de los establecimientos se han generado y guardado exitosamente en el archivo 'establecimientos.json'."
+    );
+  } catch (error) {
+    console.error("Ocurrió un error al guardar los establecimientos:", error.message);
+  }
+}
+
+
 async function guardarAlumnos() {
   const usedDNIs = new Set();
   const alumnos = [];
@@ -194,4 +208,8 @@ async function guardarAlumnos() {
   }
 }
 
+
 guardarAlumnos();
+// Llama a la función para guardar datos de establecimientos
+guardarEstablecimientos();
+  

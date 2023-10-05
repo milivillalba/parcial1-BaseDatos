@@ -4,6 +4,7 @@ export const DataLocalidades = [
   { name: "Clorinda" },
   { name: "Laguna Blanca" },
   { name: "General Belgrano" },
+  {name:  "Ingeniero Juaréz"},
 ];
 
 export const DataBarrios = {
